@@ -1,0 +1,335 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #0d1117;
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+.container {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* nav */
+.header {
+  background: #161b22;
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+/* Añadimos un contenedor interno para el header si quieres márgenes */
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* mascota con efecto parallax y fondo espacial */
+.mascota {
+  position: relative;
+  height: 600px;
+  width: 100%; /* Cambiamos 100vw por 100% */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0d1117 0%, #1a2332 100%);
+}
+
+.mascota-bg {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  object-fit: cover;
+  z-index: 0;
+  transform: translateY(0);
+}
+
+/* Capa de estrellas */
+.mascota::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Ccircle cx="100" cy="50" r="2" fill="white" opacity="0.7"/%3E%3Ccircle cx="200" cy="150" r="1" fill="white" opacity="0.5"/%3E%3Ccircle cx="300" cy="300" r="3" fill="white" opacity="0.6"/%3E%3Ccircle cx="500" cy="200" r="2" fill="white" opacity="0.8"/%3E%3Ccircle cx="700" cy="400" r="1" fill="white" opacity="0.4"/%3E%3C/svg%3E') repeat;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mascota::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.mascota-titol,
+.mascota-sub,
+.mascota-boto {
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.mascota-titol {
+  font-size: 48px;
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+  animation-delay: 0.2s;
+}
+
+.mascota-sub {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #fff;
+  animation-delay: 0.4s;
+}
+
+.mascota-boto {
+  display: inline-block;
+  background: #1f883d;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  animation-delay: 0.6s;
+}
+
+.mascota-boto:hover {
+  background: #2ea043;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* qui som */
+.qui {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Contenedor interno para .qui si quieres márgenes */
+.qui-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.titol-seccio {
+  font-size: 32px;
+  color: #0d1117;
+  margin-bottom: 20px;
+}
+
+.qui-text {
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  color: #57606a;
+}
+
+.qui-items {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.qui-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  width: 200px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.qui-item:hover {
+  transform: translateY(-5px);
+}
+
+.qui-item span {
+  color: #1f883d;
+  margin-right: 5px;
+}
+
+/* serveis */
+.serveis {
+  padding: 80px 50px;
+  text-align: center;
+  background: #fff;
+  width: 100%;
+}
+
+/* Contenedor interno para .serveis */
+.serveis-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cuadrados {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.cuadrado {
+  width: 30%;
+  min-width: 250px;
+  height: 300px;
+  background: #f6f8fa;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.cuadrado:hover {
+  transform: scale(1.05);
+}
+
+.cuadrado h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0;
+  color: #0d1117;
+}
+
+/* mschools */
+.mschools {
+  text-align: center;
+  padding: 80px 50px;
+  background: #f6f8fa;
+  width: 100%;
+}
+
+/* Contenedor interno para .mschools */
+.mschools-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mschools img {
+  max-width: 200px;
+}
+
+/* Animaciones de scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .cuadrado {
+    width: 47%;
+  }
+}
+
+@media (max-width: 480px) {
+  .mascota-titol {
+    font-size: 28px;
+  }
+  .mascota-sub {
+    font-size: 14px;
+  }
+  .titol-seccio {
+    font-size: 24px;
+  }
+  .qui-text {
+    font-size: 12px;
+  }
+  .cuadrado {
+    width: 100%;
+  }
+}
