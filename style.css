@@ -309,6 +309,37 @@ body {
   transform: translateY(0);
 }
 
+/* Estilos para el botón de "subir" */
+.to-top {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3192D0; /* Color verde como el botón de la sección mascota */
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.to-top.visible {
+  display: block; /* Visible cuando se añade la clase */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.to-top:hover {
+  background: #2ea043; /* Color al pasar el ratón */
+  transform: translateY(-5px);
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
   .cuadrado {
