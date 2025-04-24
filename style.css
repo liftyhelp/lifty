@@ -1,43 +1,38 @@
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: 'Inter', sans-serif;
-  background: #fff;
-  color: #0d1117;
+  background: #0D1117;
+  color: #ffffff;
   line-height: 1.6;
-  overflow-x: hidden; /* Evita desbordamiento horizontal */
+  overflow-x: hidden;
 }
 
 .container {
-  margin: 0;
   width: 100%;
   max-width: none;
 }
 
-/* nav */
+/* Header */
 .header {
-  background: #161b22;
-  color: #fff;
+  background: #0D1117;
   padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
-  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Añadimos un contenedor interno para el header si quieres márgenes */
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
 .logo-img {
@@ -54,12 +49,10 @@ body {
   list-style: none;
   display: flex;
   gap: 24px;
-  margin: 0;
-  padding: 0;
 }
 
 .nav ul li a {
-  color: #fff;
+  color: #c9d1d9;
   text-decoration: none;
   font-size: 16px;
   padding: 8px 12px;
@@ -68,98 +61,84 @@ body {
 }
 
 .nav ul li a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: #21262d;
+  color: #ffffff;
 }
 
-/* mascota con efecto parallax y fondo espacial */
-.mascota {
+/* Hero con texto e imagen combinados */
+.hero {
   position: relative;
-  height: 600px;
-  width: 100%; /* Cambiamos 100vw por 100% */
-  text-align: center;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   overflow: hidden;
-  background: linear-gradient(180deg, #0d1117 0%, #1a2332 100%);
+  background: linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #2a1b3d 100%);
+  padding: 80px 20px;
 }
 
-.mascota-bg {
+#particles-js {
   position: absolute;
-  top: -50%;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  object-fit: cover;
-  z-index: 0;
-  transform: translateY(0);
-}
-
-/* Capa de estrellas */
-.mascota::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"%3E%3Ccircle cx="100" cy="50" r="2" fill="white" opacity="0.7"/%3E%3Ccircle cx="200" cy="150" r="1" fill="white" opacity="0.5"/%3E%3Ccircle cx="300" cy="300" r="3" fill="white" opacity="0.6"/%3E%3Ccircle cx="500" cy="200" r="2" fill="white" opacity="0.8"/%3E%3Ccircle cx="700" cy="400" r="1" fill="white" opacity="0.4"/%3E%3C/svg%3E') repeat;
   z-index: 1;
-  pointer-events: none;
 }
 
-.mascota::before {
+/* Capa de nebulosa con brillo */
+.hero::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(circle at center, rgba(88, 166, 255, 0.2) 0%, rgba(163, 113, 247, 0.2) 30%, transparent 70%);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  transition16pxtransition: transform 0.1s ease-out; /* Suaviza el movimiento del parallax */
+}
+
+/* Aseguramos que el contenido no se desborde */
+.hero-content h1, .hero-content p, .hero-content a, .hero-content h2 {
+  position: relative;
   z-index: 2;
 }
 
-.mascota-titol,
-.mascota-sub,
-.mascota-boto {
-  position: relative;
-  z-index: 3;
-  opacity: 0;
-  transform: translateY(20px);
+.hero-titol {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
   animation: fadeInUp 0.8s ease forwards;
 }
 
-.mascota-titol {
-  font-size: 48px;
-  margin: 0;
-  font-weight: 600;
-  color: #fff;
-  animation-delay: 0.2s;
-}
-
-.mascota-sub {
+.hero-sub {
   font-size: 20px;
-  margin: 10px 0;
-  color: #fff;
-  animation-delay: 0.4s;
+  color: #c9d1d9;
+  margin: 16px 0;
+  animation: fadeInUp 0.8s ease forwards 0.2s;
 }
 
-.mascota-boto {
+.hero-boto {
   display: inline-block;
-  background: #1f883d;
-  color: #fff;
+  background: #238636;
+  color: #ffffff;
   padding: 12px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-size: 16px;
-  margin-top: 20px;
+  font-weight: 600;
   transition: background 0.3s ease, transform 0.2s ease;
-  animation-delay: 0.6s;
+  animation: fadeInUp 0.8s ease forwards 0.4s;
+  margin-top: 20px;
 }
 
-.mascota-boto:hover {
+.hero-boto:hover {
   background: #2ea043;
   transform: translateY(-2px);
 }
@@ -175,34 +154,45 @@ body {
   }
 }
 
-/* qui som */
-.qui {
-  padding: 40px 20px;
-  text-align: center;
-  background: #f6f8fa;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.mobile-mockup {
+  position: relative;
+  max-width: 1500px;
+  margin: 40px auto;
+  z-index: 2;
 }
 
-/* Contenedor interno para .qui si quieres márgenes */
-.qui-inner {
-  max-width: 1280px;
-  margin: 0 auto;
+.mobile-img {
   width: 100%;
+  border-radius: 20px;
+  transition: transform 0.1s ease-out;
 }
 
 .titol-seccio {
   font-size: 32px;
-  color: #0d1117;
-  margin-bottom: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+/* Qui som */
+.qui {
+  padding: 80px 20px;
+  background: #0D1117;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+.qui-inner {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .qui-text {
   font-size: 16px;
+  color: #c9d1d9;
   max-width: 800px;
-  margin: 0 auto 20px;
-  color: #57606a;
+  margin: 0 auto 40px;
 }
 
 .qui-items {
@@ -213,11 +203,11 @@ body {
 }
 
 .qui-item {
-  background: #fff;
-  padding: 15px;
+  background: #21262d;
+  padding: 20px;
   border-radius: 6px;
   width: 200px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
@@ -226,28 +216,23 @@ body {
 }
 
 .qui-item span {
-  color: #1f883d;
-  margin-right: 5px;
+  color: #a371f7;
+  margin-right: 8px;
 }
 
-/* serveis */
+/* Serveis */
 .serveis {
-  padding: 80px 50px;
+  padding: 80px 20px;
+  background: #161b22;
   text-align: center;
-  background: #fff;
-  width: 100%;
 }
 
-/* Contenedor interno para .serveis */
 .serveis-inner {
   max-width: 1280px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .cuadrados {
-  max-width: 1000px;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -257,10 +242,10 @@ body {
 .cuadrado {
   width: 30%;
   min-width: 250px;
-  height: 300px;
-  background: #f6f8fa;
+  height: 200px;
+  background: #21262d;
   border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,50 +258,171 @@ body {
 
 .cuadrado h3 {
   font-size: 18px;
-  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Nueva sección de pantalla completa con capa negra */
+.folder-section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
   margin: 0;
-  color: #0d1117;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* mschools */
-.mschools {
-  text-align: center;
-  padding: 80px 50px;
-  background: #f6f8fa;
+.folder-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Capa negra con opacidad baja */
+  z-index: 1;
 }
 
-/* Contenedor interno para .mschools */
+.folder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Instruccions con parallax */
+.instruccions {
+  padding: 80px 20px;
+  background: #0D1117;
+  text-align: center;
+  position: relative;
+}
+
+.instruccions-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.instruccions-text {
+  font-size: 16px;
+  color: #c9d1d9;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.instruccions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.instruccio {
+  width: 30%;
+  min-width: 250px;
+  background: #21262d;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.instruccio:hover {
+  transform: scale(1.05);
+}
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+}
+
+.instruccio-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.parallax-img {
+  transform: translateY(0);
+}
+
+.instruccio h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+.instruccio p {
+  font-size: 14px;
+  color: #c9d1d9;
+}
+
+/* Animaciones de scroll */
+.instruccio, .qui-item, .cuadrado {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.instruccio.visible, .qui-item.visible, .cuadrado.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* mSchools */
+.mschools {
+  padding: 80px 20px;
+  background: #161b22;
+  text-align: center;
+}
+
 .mschools-inner {
   max-width: 1280px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .mschools img {
   max-width: 200px;
 }
 
-/* Animaciones de scroll */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* Footer */
+.footer {
+  padding: 40px 20px;
+  background: #0D1117;
+  text-align: center;
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-/* Estilos para el botón de "subir" */
+.footer p {
+  font-size: 14px;
+  color: #c9d1d9;
+}
+
+.footer a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Botón subir */
 .to-top {
-  display: none; /* Oculto por defecto */
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #3192D0; /* Color verde como el botón de la sección mascota */
-  color: #fff;
+  background: #238636;
+  color: #ffffff;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -330,37 +436,55 @@ body {
 }
 
 .to-top.visible {
-  display: block; /* Visible cuando se añade la clase */
+  display: block;
   opacity: 1;
   transform: translateY(0);
 }
 
 .to-top:hover {
-  background: #2ea043; /* Color al pasar el ratón */
+  background: #2ea043;
   transform: translateY(-5px);
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .cuadrado {
+  .hero-titol {
+    font-size: 36px;
+  }
+  .hero-sub {
+    font-size: 16px;
+  }
+  .mobile-mockup {
+    max-width: 600px;
+  }
+  .cuadrado, .instruccio {
     width: 47%;
+  }
+  .folder-section {
+    height: 60vh;
   }
 }
 
 @media (max-width: 480px) {
-  .mascota-titol {
+  .hero-titol {
     font-size: 28px;
   }
-  .mascota-sub {
+  .hero-sub {
     font-size: 14px;
   }
   .titol-seccio {
     font-size: 24px;
   }
-  .qui-text {
-    font-size: 12px;
+  .qui-text, .instruccions-text {
+    font-size: 14px;
   }
-  .cuadrado {
+  .mobile-mockup {
+    max-width: 100%;
+  }
+  .cuadrado, .instruccio {
     width: 100%;
+  }
+  .folder-section {
+    height: 50vh;
   }
 }
