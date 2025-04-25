@@ -1,3 +1,11 @@
+:root {
+  /* Variables para personalizar la luz blanca */
+  --light-size: 80%; 
+  --light-blur: 50px; 
+  --light-opacity: 1; 
+  --light-gradient: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 15%, #2595CD 40%, transparent 70%); /* Gradiente de la luz */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -68,20 +76,35 @@ body {
 /* Hero con texto e imagen combinados */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: 1000px; 
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #2a1b3d 100%);
-  padding: 80px 20px;
+  background: radial-gradient(circle at center, #00418b 0%, #01407f 50%, rgba(0, 9, 111, 0.254) 100%); /* Fondo oscuro con un toque de #2595CD */
+}
+
+/* Efecto de luz intensa y realista detrás de la imagen del portátil */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 70%; 
+  left: 50%;
+  width: var(--light-size); 
+  height: var(--light-size);
+  background: var(--light-gradient); 
+  filter: blur(var(--light-blur)); 
+  transform: translate(-50%, -50%);
+  z-index: 0; 
+  opacity: var(--light-opacity); 
+  pointer-events: none;
 }
 
 #particles-js {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100%; 
   z-index: 1;
 }
 
@@ -93,27 +116,110 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(88, 166, 255, 0.2) 0%, rgba(163, 113, 247, 0.2) 30%, transparent 70%);
-  z-index: 0;
-  opacity: 0.6;
+  background: radial-gradient(circle at center, rgba(0, 170, 255, 0.924) 0%, transparent 70%); /* Capa adicional con #2595CD */
+  z-index: -1; 
+  opacity: 0.5; 
+}
+
+/* Imágenes de fondo (Lifty y planetas) */
+.lifty-bg, .planet-bg {
+  position: absolute;
+  z-index: 0; 
+  filter: drop-shadow(0 0 100px rgba(37, 149, 205, 0.3)); 
+  pointer-events: none; 
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+/* Estilo específico para Lifty */
+.lifty-bg {
+  width: 200px; 
+  top: 10%;
+  left: 15%;
+  animation: float 6s ease-in-out infinite; 
+}
+
+/* Animación de flotación para Lifty */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(20px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(10deg);
+  }
+}
+
+/* Estilos para los "planetas" (iconos) */
+.planet-bg {
+  animation: orbit 20s linear infinite; 
+}
+
+/* Animación de órbita para los planetas */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(15px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(15px) rotate(-360deg);
+  }
+}
+
+/* Posiciones y tamaños específicos para cada planeta */
+.planet-1 {
+  width: 100px; 
+  top: 700px;
+  left: 1500px;
+  animation-delay: 0s; 
+}
+
+.planet-2 {
+  width: 110px; 
+  top: 700px;
+  left: 60px;
+  animation-delay: 5s;
+}
+
+.planet-3 {
+  width: 70px; 
+  top: 30%;
+  right: 30%;
+  animation-delay: 10s;
+}
+
+.planet-4 {
+  width: 130px; 
+  bottom: 800px;
+  left: 1500px;
+  animation-delay: 15s;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  transition16pxtransition: transform 0.1s ease-out; /* Suaviza el movimiento del parallax */
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
 }
 
-/* Aseguramos que el contenido no se desborde */
-.hero-content h1, .hero-content p, .hero-content a, .hero-content h2 {
-  position: relative;
-  z-index: 2;
+/* Contenedor para el texto fijo */
+.hero-text {
+  position: fixed;
+  top: 50%; 
+  transform: translateY(-50%); 
+  width: 100%;
+  max-width: 1280px;
+  text-align: center;
+  z-index: 2; 
+  transition: opacity 0.5s ease, filter 0.5s ease; 
 }
 
 .hero-titol {
-  font-size: 48px;
-  font-weight: 700;
-  color: #ffffff;
+  width: 240px; 
   animation: fadeInUp 0.8s ease forwards;
 }
 
@@ -124,23 +230,11 @@ body {
   animation: fadeInUp 0.8s ease forwards 0.2s;
 }
 
-.hero-boto {
-  display: inline-block;
-  background: #238636;
-  color: #ffffff;
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 16px;
+.titol-seccia {
+  font-size: 32px;
   font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
-  animation: fadeInUp 0.8s ease forwards 0.4s;
-  margin-top: 20px;
-}
-
-.hero-boto:hover {
-  background: #2ea043;
-  transform: translateY(-2px);
+  color: #ffffff;
+  margin: 20px 0 60px;
 }
 
 @keyframes fadeInUp {
@@ -156,22 +250,20 @@ body {
 
 .mobile-mockup {
   position: relative;
-  max-width: 1500px;
-  margin: 40px auto;
-  z-index: 2;
+  max-width: 1200px;
+  margin: 300px auto 0; 
+  z-index: 3; 
+  aspect-ratio: 12 / 12;
+  overflow: hidden;
+  transition: transform 0.2s ease-out; 
 }
 
 .mobile-img {
+  margin-top: 500px;
   width: 100%;
+  height: auto;
   border-radius: 20px;
-  transition: transform 0.1s ease-out;
-}
-
-.titol-seccio {
-  font-size: 32px;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 20px 0;
+  object-fit: contain;
 }
 
 /* Qui som */
@@ -181,6 +273,33 @@ body {
   text-align: center;
   position: relative;
   z-index: 0;
+  border-top: 1px solid #21262d;
+}
+
+.qui::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(4, 65, 248, 0.71) 50%, transparent 100%);
+  filter: blur(50px);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.qui::after {
+  content: '';
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, rgba(4, 65, 248, 0.71) 50%, transparent 100%);
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.8;
 }
 
 .qui-inner {
@@ -188,11 +307,20 @@ body {
   margin: 0 auto;
 }
 
+.qui .titol-seccia {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 20px 0 10px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
 .qui-text {
   font-size: 16px;
   color: #c9d1d9;
   max-width: 800px;
   margin: 0 auto 40px;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 .qui-items {
@@ -203,20 +331,23 @@ body {
 }
 
 .qui-item {
-  background: #21262d;
+  background: #161b22;
   padding: 20px;
   border-radius: 6px;
   width: 200px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 122px 28px rgba(0, 0, 0, 0.15), 0 0 10px rgba(37, 149, 205, 0.4);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: visible;
 }
 
 .qui-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 15px rgba(37, 149, 205, 0.6);
 }
 
 .qui-item span {
-  color: #a371f7;
+  color: #2595CD;
   margin-right: 8px;
 }
 
@@ -225,11 +356,70 @@ body {
   padding: 80px 20px;
   background: #161b22;
   text-align: center;
+  border-top: 1px solid #21262d;
+  position: relative; 
+  overflow: hidden; 
+}
+
+/* Contenedor para partículas-cometas */
+.serveis::before,
+.serveis::after,
+.serveis-inner::before,
+.serveis-inner::after {
+  content: '';
+  position: absolute;
+  width: 8px; 
+  height: 8px;
+  background: radial-gradient(circle, rgba(37, 149, 205, 0.8) 20%, transparent 80%); /* Cola difuminada */
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(4, 65, 248, 0.5), 0 0 20px rgba(255, 255, 255, 0.3); /* Brillo de cometa */
+  z-index: 0; 
+  pointer-events: none;
+  animation: comet 2s linear infinite; 
+}
+
+/* Posiciones iniciales y retrasos para variedad */
+.serveis::before {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.serveis::after {
+  top: 30%;
+  left: 60%;
+  animation-delay: 0.5s;
+}
+.serveis-inner::before {
+  top: 50%;
+  left: 30%;
+  animation-delay: 1s;
+}
+.serveis-inner::after {
+  top: 70%;
+  left: 80%;
+  animation-delay: 1.5s;
+}
+
+/* Animación de cometas */
+@keyframes comet {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(800px, -800px) scale(1.5); 
+    opacity: 0;
+  }
 }
 
 .serveis-inner {
   max-width: 1280px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1; 
 }
 
 .cuadrados {
@@ -243,22 +433,82 @@ body {
   width: 30%;
   min-width: 250px;
   height: 200px;
-  background: #21262d;
+  background: #0D1117; 
+  border: 1px solid #2595CD;
   border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s ease; 
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-decoration: none; 
+  color: inherit; 
 }
 
-.cuadrado:hover {
-  transform: scale(1.05);
+/* Efecto azul al hacer clic */
+.cuadrado:active {
+  background: #2595CD; 
+}
+
+/* Fondo de respaldo para depuración */
+.cuadrado:not([data-image]), .cuadrado[data-image=""] {
+  background: #2a2e34; 
 }
 
 .cuadrado h3 {
   font-size: 18px;
   color: #ffffff;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 4px;
+  z-index: 1;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.cuadrado:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .cuadrado {
+    width: 47%;
+  }
+  .cuadrado h3 {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+  .serveis::before,
+  .serveis::after,
+  .serveis-inner::before,
+  .serveis-inner::after {
+    width: 6px; 
+    height: 6px;
+    animation-duration: 1.5s; 
+  }
+}
+
+@media (max-width: 480px) {
+  .cuadrado {
+    width: 100%;
+  }
+  .cuadrado h3 {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .serveis::before,
+  .serveis::after,
+  .serveis-inner::before,
+  .serveis-inner::after {
+    width: 5px; 
+    height: 5px;
+    animation-duration: 1.2s; 
+  }
 }
 
 /* Nueva sección de pantalla completa con capa negra */
@@ -276,15 +526,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: 100px;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Capa negra con opacidad baja */
+  height: 80%;
+
   z-index: 1;
 }
 
 .folder-img {
+  margin-top: 100px;
   width: 100%;
-  height: 100%;
+  height: 80%;
   object-fit: cover;
   display: block;
 }
@@ -376,7 +628,7 @@ body {
 /* mSchools */
 .mschools {
   padding: 80px 20px;
-  background: #161b22;
+  background: #2595CD;
   text-align: center;
 }
 
@@ -449,7 +701,7 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
   .hero-titol {
-    font-size: 36px;
+    width: 180px; 
   }
   .hero-sub {
     font-size: 16px;
@@ -463,16 +715,25 @@ body {
   .folder-section {
     height: 60vh;
   }
+  .lifty-bg {
+    width: 150px; 
+    top: 15%;
+    left: 10%;
+  }
+  .planet-1 { width: 40px; }
+  .planet-2 { width: 90px; }
+  .planet-3 { width: 50px; }
+  .planet-4 { width: 70px; }
 }
 
 @media (max-width: 480px) {
   .hero-titol {
-    font-size: 28px;
+    width: 140px; 
   }
   .hero-sub {
     font-size: 14px;
   }
-  .titol-seccio {
+  .titol-seccia {
     font-size: 24px;
   }
   .qui-text, .instruccions-text {
@@ -487,4 +748,13 @@ body {
   .folder-section {
     height: 50vh;
   }
+  .lifty-bg {
+    width: 100px; 
+    top: 10%;
+    left: 5%;
+  }
+  .planet-1 { width: 30px; }
+  .planet-2 { width: 70px; }
+  .planet-3 { width: 40px; }
+  .planet-4 { width: 50px; }
 }

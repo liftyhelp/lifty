@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Animaciones de scroll
+  // Animaciones de scroll para elementos con IntersectionObserver
   const elements = document.querySelectorAll('.instruccio, .qui-item, .cuadrado');
 
   const observer = new IntersectionObserver((entries) => {
@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.forEach(element => observer.observe(element));
 
-  // Configuración de Particles.js con colores de nebulosa
+  // Configuración de Particles.js ajustada para el nuevo fondo
   particlesJS('particles-js', {
     particles: {
       number: { value: 100, density: { enable: true, value_area: 800 } },
-      color: { value: ['#ffffff', '#58a6ff', '#a371f7', '#ff6bcb'] },
+      color: { value: ['#ffffff', '#2595CD'] },
       shape: { type: 'circle' },
-      opacity: { value: 0.6, random: true },
+      opacity: { value: 0.4, random: true },
       size: { value: 3, random: true },
       line_linked: { enable: false },
       move: { enable: true, speed: 1.5, direction: 'none', random: true }
@@ -29,6 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
       events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } }
     }
   });
+
+  // Ajustar la altura de #particles-js para que termine en la parte inferior de .mobile-img
+  const particles = document.querySelector('#particles-js');
+  const mobileMockup = document.querySelector('.mobile-mockup');
+  const mobileImg = document.querySelector('.mobile-img');
+
+  function setParticlesHeight() {
+    const mobileRect = mobileMockup.getBoundingClientRect();
+    const mobileImgRect = mobileImg.getBoundingClientRect();
+    const heroRect = document.querySelector('.hero').getBoundingClientRect();
+    const particlesHeight = mobileImgRect.bottom - heroRect.top;
+    particles.style.height = `${particlesHeight}px`;
+  }
+
+  setParticlesHeight();
+
+  window.addEventListener('resize', setParticlesHeight);
 
   // Efecto parallax para las imágenes de instruccions
   const parallaxImages = document.querySelectorAll('.parallax-img');
@@ -53,16 +70,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Efecto parallax para el texto y la imagen en la sección hero
-  const heroContent = document.querySelector('.hero-content');
-  const mobileImg = document.querySelector('.mobile-img');
+  // Efecto parallax al estilo GitHub para el texto fijo y la imagen del portátil
+  const heroText = document.querySelector('.hero-text');
+  const quiSection = document.querySelector('.qui');
+  let hasDisappeared = false;
+
   window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
-    // Parallax para el texto (se mueve hacia abajo más lentamente)
-    const textOffset = scrollPosition * 0.3;
-    heroContent.style.transform = `translateY(${textOffset}px)`;
-    // Parallax para la imagen (se mueve hacia arriba más rápido)
-    const imgOffset = scrollPosition * -0.5;
-    mobileImg.style.transform = `translateY(${imgOffset}px)`;
+    const quiRect = quiSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (quiRect.top < windowHeight) {
+      hasDisappeared = true;
+      mobileMockup.classList.add('sticky');
+      heroText.style.opacity = '0';
+      heroText.style.filter = 'blur(8px)';
+    } else {
+      hasDisappeared = false;
+      mobileMockup.classList.remove('sticky');
+      heroText.style.opacity = '1';
+      heroText.style.filter = 'none';
+    }
+
+    if (!mobileMockup.classList.contains('sticky')) {
+      const imgOffset = scrollPosition * -0.7;
+      mobileMockup.style.transform = `translateY(${imgOffset}px)`;
+    }
+
+    if (!hasDisappeared) {
+      const heroTextRect = heroText.getBoundingClientRect();
+      const mobileRect = mobileMockup.getBoundingClientRect();
+      const fadeStart = windowHeight * 0.3;
+      const fadeEnd = windowHeight * 0.1;
+      let opacity = 1;
+      let blur = 0;
+
+      const distance = heroTextRect.bottom - mobileRect.top;
+      if (mobileRect.top < fadeStart) {
+        opacity = distance / (fadeStart - fadeEnd);
+        blur = (1 - opacity) * 8;
+        opacity = Math.max(0, Math.min(1, opacity));
+        blur = Math.max(0, Math.min(8, blur));
+      }
+
+      heroText.style.opacity = opacity;
+      heroText.style.filter = `blur(${blur}px)`;
+    }
+
+    if (quiRect.top < windowHeight && quiRect.bottom > 0) {
+      const quiOffset = (windowHeight - quiRect.top) * 0.1;
+      quiSection.style.transform = `translateY(-${quiOffset}px)`;
+    }
   });
 });
