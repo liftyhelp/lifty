@@ -209,7 +209,7 @@ body {
 /* Contenedor para el texto fijo */
 .hero-text {
   position: fixed;
-  top: 50%; 
+  top: 35%; 
   transform: translateY(-50%); 
   width: 100%;
   max-width: 1280px;
@@ -259,7 +259,7 @@ body {
 }
 
 .mobile-img {
-  margin-top: 300px;
+  margin-top: 250px;
   width: 100%;
   height: auto;
   border-radius: 20px;
@@ -268,13 +268,12 @@ body {
 
 .promo-video {
   position: absolute;
-  top: 33%; /* Ajustado para centrar en la pantalla del portátil */
+  top: 28%; /* Ajustado para centrar en la pantalla del portátil */
   left: 75px; /* Centrado horizontalmente en la pantalla */
   width: 85%; /* Ajustado para encajar en la pantalla del portátil */
   height: 560px; /* Ajustado para mantener proporciones */
   object-fit: cover; /* Asegura que el vídeo llene el área sin distorsión */
   border-radius: 15px; /* Bordes redondeados para simular la pantalla */
-  z-index: ; /* Encima de .mobile-img pero detrás de .qui */
   pointer-events: none; /* Evita interacciones con el vídeo */
 }
 
