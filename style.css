@@ -234,7 +234,7 @@ body {
   font-size: 32px;
   font-weight: 600;
   color: #ffffff;
-  margin: 20px 0 60px;
+  margin: 20px 0 10px;
 }
 
 @keyframes fadeInUp {
@@ -268,13 +268,13 @@ body {
 
 .promo-video {
   position: absolute;
-  top: 28%; /* Ajustado para centrar en la pantalla del portátil */
-  left: 75px; /* Centrado horizontalmente en la pantalla */
-  width: 85%; /* Ajustado para encajar en la pantalla del portátil */
-  height: 560px; /* Ajustado para mantener proporciones */
-  object-fit: cover; /* Asegura que el vídeo llene el área sin distorsión */
-  border-radius: 15px; /* Bordes redondeados para simular la pantalla */
-  pointer-events: none; /* Evita interacciones con el vídeo */
+  top: 28%; 
+  left: 75px; 
+  width: 85%; 
+  height: 560px; 
+  object-fit: cover; 
+  border-radius: 15px; 
+  pointer-events: none; 
 }
 
 /* Qui som */
@@ -397,10 +397,10 @@ body {
   margin-right: 8px;
 }
 
-/* Resto del CSS (sin cambios) */
+/* Serveis */
 .serveis {
-  padding: 80px 20px;
-  background: #161b22;
+  padding: 150px 20px;
+  background: #0f1318;
   text-align: center;
   border-top: 1px solid #21262d;
   position: relative; 
@@ -463,6 +463,7 @@ body {
 
 .serveis-inner {
   max-width: 1280px;
+  margin-top: 100px;
   margin: 0 auto;
   position: relative;
   z-index: 1; 
@@ -470,6 +471,7 @@ body {
 
 .cuadrados {
   display: flex;
+  margin-top: 100px;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
@@ -479,7 +481,7 @@ body {
   width: 30%;
   min-width: 250px;
   height: 200px;
-  background: #0D1117; 
+  background: #243d63; 
   border: 1px solid #2595CD;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -579,14 +581,12 @@ body {
 }
 
 .folder-img {
-  margin-top: 100px;
   width: 100%;
-  height: 80%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Instruccions con parallax */
 .instruccions {
   padding: 80px 20px;
   background: #0D1117;
@@ -603,10 +603,11 @@ body {
   font-size: 16px;
   color: #c9d1d9;
   max-width: 800px;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }
 
 .instruccions-grid {
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -616,46 +617,78 @@ body {
 .instruccio {
   width: 30%;
   min-width: 250px;
+  height: 300px; /* Altura fija para asegurar que el cuadrado sea consistente */
   background: #21262d;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 0; /* Sin padding para que la imagen ocupe todo */
   transition: transform 0.3s ease;
+  position: relative; /* Para posicionar imagen, capa y texto */
+  overflow: hidden; /* Evita desbordes */
+}
+
+.instruccio img {
+  width: 100%;
+  height: 100%; /* Ocupa todo el alto y ancho del cuadrado */
+  object-fit: cover; /* Llena el contenedor, recortando si es necesario */
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Debajo de la capa negra y el texto */
+}
+
+/* Capa negra superpuesta */
+.instruccio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cubre todo el cuadrado */
+  background: rgba(0, 0, 0, 0.3); /* Negro con opacidad baja */
+  border-radius: 6px;
+  z-index: 1; /* Encima de la imagen, debajo del texto */
+}
+
+/* Contenedor para el texto */
+.instruccio h3, .instruccio p {
+  position: absolute; /* Posiciona el texto sobre la imagen */
+  z-index: 2; /* Encima de la imagen y la capa negra */
+  color: #ffffff;
+  text-align: center;
+  width: 100%; /* Ocupa todo el ancho para centrar */
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8); /* Mejora legibilidad */
+}
+
+.instruccio h3 {
+  font-size: 18px;
+  top: 20px; /* Ajustado para posicionar cerca de la parte superior */
+}
+
+.instruccio p {
+  font-size: 14px;
+  bottom: 20px; /* Ajustado para posicionar cerca de la parte inferior */
+  padding: 0 20px; /* Espaciado lateral para evitar bordes */
 }
 
 .instruccio:hover {
   transform: scale(1.05);
 }
 
-.parallax-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 150px;
-  border-radius: 6px;
+/* Responsividad */
+@media (max-width: 768px) {
+  .instruccio {
+    width: 47%;
+    height: 250px; /* Ajuste de altura para tablet */
+  }
 }
 
-.instruccio-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-  transition: transform 0.3s ease;
-}
-
-.parallax-img {
-  transform: translateY(0);
-}
-
-.instruccio h3 {
-  font-size: 18px;
-  color: #ffffff;
-  margin: 10px 0;
-}
-
-.instruccio p {
-  font-size: 14px;
-  color: #c9d1d9;
+@media (max-width: 480px) {
+  .instruccio {
+    width: 100%;
+    height: 200px; /* Ajuste de altura para móvil */
+  }
 }
 
 /* Animaciones de scroll */
