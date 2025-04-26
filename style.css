@@ -629,11 +629,73 @@ body {
   background: #0D1117;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+/* Luces de fondo para la sección Instruccions */
+.instruccions::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 50%;
+  height: 30%;
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* #2595CD intenso */
+  filter: blur(180px); /* Poco desenfoque */
+  z-index: 2; /* Detrás de los cuadrados */
+  opacity: 1; /* Base visible */
+  animation: pulse 6s ease-in-out infinite; /* Animación de pulsación */
+}
+
+.instruccions::after {
+  content: '';
+  position: absolute;
+  top: 70%;
+  right: 5%; /* Movido más a la derecha (de 15% a 5%) */
+  width: 40%;
+  height: 20%;
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* Tono más claro de #2595CD */
+  filter: blur(180px); /* Muy poco desenfoque */
+  z-index: 1; /* Detrás de los cuadrados */
+  opacity: 0.9; /* Ligeramente más suave */
+  animation: pulse 5s ease-in-out infinite 1s; /* Pulsación con retraso */
+}
+
+.instruccions-inner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 40%;
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* Tono más oscuro de #2595CD */
+  filter: blur(180px); /* Poco desenfoque */
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Detrás de los cuadrados */
+  opacity: 1; /* Base visible */
+  animation: pulse 7s ease-in-out infinite 0.5s; /* Pulsación con retraso diferente */
+}
+
+/* Animación de pulsación para las luces */
+@keyframes pulse {
+  0% {
+    transform: scale(1) translate(-50%, -50%); /* Ajuste para la luz centrada */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) translate(-50%, -50%); /* Crece ligeramente */
+    opacity: 0.7; /* Se desvanece un poco */
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%); /* Vuelve al tamaño original */
+    opacity: 1; /* Nota: Esto parece un error, debería ser 1 */
+  }
 }
 
 .instruccions-inner {
   max-width: 1280px;
   margin: 0 auto;
+  z-index: 1; /* Encima de las luces */
 }
 
 .instruccions-text {
@@ -649,6 +711,7 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  background: transparent; /* Evita fondo opaco */
 }
 
 .instruccio {
@@ -662,6 +725,7 @@ body {
   transition: transform 0.3s ease;
   position: relative; /* Para posicionar imagen, capa y texto */
   overflow: hidden; /* Evita desbordes */
+  z-index: 2; /* Encima de las luces */
 }
 
 .instruccio-img {
@@ -718,6 +782,16 @@ body {
     width: 47%;
     height: 250px; /* Ajuste de altura para tablet */
   }
+  /* Ajuste de luces para pantallas medianas */
+  .instruccions::before {
+    filter: blur(15px); /* Menos desenfoque */
+  }
+  .instruccions::after {
+    filter: blur(10px);
+  }
+  .instruccions-inner::before {
+    filter: blur(20px);
+  }
 }
 
 @media (max-width: 480px) {
@@ -725,16 +799,26 @@ body {
     width: 100%;
     height: 200px; /* Ajuste de altura para móvil */
   }
+  /* Ajuste de luces para pantallas pequeñas */
+  .instruccions::before {
+    filter: blur(10px); /* Aún menos desenfoque */
+  }
+  .instruccions::after {
+    filter: blur(8px);
+  }
+  .instruccions-inner::before {
+    filter: blur(15px);
+  }
 }
 
 /* Animaciones de scroll */
-.instruccio, .qui-item, .cuadrado {
+.instruccio {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.instruccio.visible, .qui-item.visible, .cuadrado.visible {
+.instruccio.visible {
   opacity: 1;
   transform: translateY(0);
 }
