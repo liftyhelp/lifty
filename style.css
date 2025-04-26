@@ -1,9 +1,8 @@
 :root {
-  /* Variables para personalizar la luz blanca */
-  --light-size: 80%; 
-  --light-blur: 50px; 
-  --light-opacity: 1; 
-  --light-gradient: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 15%, #2595CD 40%, transparent 70%); /* Gradiente de la luz */
+  --light-size: 80%;
+  --light-blur: 50px;
+  --light-opacity: 1;
+  --light-gradient: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 15%, #2595CD 40%, transparent 70%);
 }
 
 * {
@@ -73,42 +72,40 @@ body {
   color: #ffffff;
 }
 
-/* Hero con texto e imagen combinados */
+/* Hero */
 .hero {
   position: relative;
-  height: 1000px; 
+  height: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   overflow: hidden;
-  background: radial-gradient(circle at center, #00418b 0%, #01407f 50%, rgba(0, 9, 111, 0.254) 100%); /* Fondo oscuro con un toque de #2595CD */
+  background: radial-gradient(circle at center, #00418b 0%, #01407f 50%, rgba(0, 9, 111, 0.254) 100%);
 }
 
-/* Efecto de luz intensa y realista detrás de la imagen del portátil */
 .hero::after {
   content: '';
   position: absolute;
-  top: 70%; 
+  top: 70%;
   left: 50%;
-  width: var(--light-size); 
+  width: var(--light-size);
   height: var(--light-size);
-  background: var(--light-gradient); 
-  filter: blur(var(--light-blur)); 
+  background: var(--light-gradient);
+  filter: blur(var(--light-blur));
   transform: translate(-50%, -50%);
-  z-index: 0; 
-  opacity: var(--light-opacity); 
+  z-index: 0;
+  opacity: var(--light-opacity);
   pointer-events: none;
 }
 
 #particles-js {
   position: absolute;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   z-index: 1;
 }
 
-/* Capa de nebulosa con brillo */
 .hero::before {
   content: '';
   position: absolute;
@@ -116,29 +113,26 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(0, 170, 255, 0.924) 0%, transparent 70%); /* Capa adicional con #2595CD */
-  z-index: -1; 
-  opacity: 0.5; 
+  background: radial-gradient(circle at center, rgba(0, 170, 255, 0.924) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0.5;
 }
 
-/* Imágenes de fondo (Lifty y planetas) */
 .lifty-bg, .planet-bg {
   position: absolute;
-  z-index: 0; 
-  filter: drop-shadow(0 0 100px rgba(37, 149, 205, 0.3)); 
-  pointer-events: none; 
-  transition: transform 0.3s ease, opacity 0.3s ease; 
+  z-index: 0;
+  filter: drop-shadow(0 0 100px rgba(37, 149, 205, 0.3));
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Estilo específico para Lifty */
 .lifty-bg {
-  width: 200px; 
+  width: 200px;
   top: 10%;
   left: 15%;
-  animation: float 6s ease-in-out infinite; 
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Animación de flotación para Lifty */
 @keyframes float {
   0% {
     transform: translateY(0px) rotate(10deg);
@@ -151,12 +145,10 @@ body {
   }
 }
 
-/* Estilos para los "planetas" (iconos) */
 .planet-bg {
-  animation: orbit 20s linear infinite; 
+  animation: orbit 20s linear infinite;
 }
 
-/* Animación de órbita para los planetas */
 @keyframes orbit {
   0% {
     transform: rotate(0deg) translateX(15px) rotate(0deg);
@@ -166,30 +158,29 @@ body {
   }
 }
 
-/* Posiciones y tamaños específicos para cada planeta */
 .planet-1 {
-  width: 100px; 
+  width: 100px;
   top: 700px;
   left: 1500px;
-  animation-delay: 0s; 
+  animation-delay: 0s;
 }
 
 .planet-2 {
-  width: 110px; 
+  width: 110px;
   top: 700px;
   left: 60px;
   animation-delay: 5s;
 }
 
 .planet-3 {
-  width: 70px; 
+  width: 70px;
   top: 30%;
   right: 30%;
   animation-delay: 10s;
 }
 
 .planet-4 {
-  width: 130px; 
+  width: 130px;
   bottom: 800px;
   left: 1500px;
   animation-delay: 15s;
@@ -206,20 +197,19 @@ body {
   max-width: 1280px;
 }
 
-/* Contenedor para el texto fijo */
 .hero-text {
   position: fixed;
-  top: 35%; 
-  transform: translateY(-50%); 
+  top: 35%;
+  transform: translateY(-50%);
   width: 100%;
   max-width: 1280px;
   text-align: center;
-  z-index: -12; 
-  transition: opacity 0.5s ease, filter 0.5s ease; 
+  z-index: -12;
+  transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
 .hero-titol {
-  width: 240px; 
+  width: 240px;
   animation: fadeInUp 0.8s ease forwards;
 }
 
@@ -255,7 +245,7 @@ body {
   z-index: -9;
   aspect-ratio: 2 / 2;
   overflow: hidden;
-  transition: transform 0.2s ease-out; 
+  transition: transform 0.2s ease-out;
 }
 
 .mobile-img {
@@ -268,13 +258,13 @@ body {
 
 .promo-video {
   position: absolute;
-  top: 28%; 
-  left: 75px; 
-  width: 85%; 
-  height: 560px; 
-  object-fit: cover; 
-  border-radius: 15px; 
-  pointer-events: none; 
+  top: 28%;
+  left: 75px;
+  width: 85%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 15px;
+  pointer-events: none;
 }
 
 /* Qui som */
@@ -351,7 +341,6 @@ body {
   overflow: visible;
 }
 
-/* Asignar colores de borde y efectos neón a cada elemento */
 .qui-item:nth-child(1) {
   border: 1px solid #2595CD;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15), 0 0 60px rgba(37, 149, 205, 0.4);
@@ -403,11 +392,10 @@ body {
   background: #0f1318;
   text-align: center;
   border-top: 1px solid #21262d;
-  position: relative; 
-  overflow: hidden; 
+  position: relative;
+  overflow: hidden;
 }
 
-/* Luz fija centrada en el fondo */
 .serveis::before {
   content: '';
   position: absolute;
@@ -423,7 +411,6 @@ body {
   pointer-events: none;
 }
 
-/* Contenedor para partículas-cometas */
 .serveis::after,
 .serveis-inner::before,
 .serveis-inner::after,
@@ -431,44 +418,46 @@ body {
 .serveis-inner > div::after {
   content: '';
   position: absolute;
-  width: 6px; /* Aumentado para más visibilidad */
+  width: 6px;
   height: 6px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 10%, #2595CD 50%, transparent 80%);
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(37, 149, 205, 0.6);
-  z-index: -2; /* Detrás de los cuadrados, encima de la luz fija */
+  z-index: -2;
   pointer-events: none;
-  animation: comet 2.5s linear infinite; /* Animación más suave */
+  animation: comet 2.5s linear infinite;
 }
 
-/* Posiciones iniciales y retrasos para variedad */
 .serveis::after {
   top: 30%;
   left: 60%;
   animation-delay: 0.5s;
 }
+
 .serveis-inner::before {
   top: 50%;
   left: 30%;
   animation-delay: 1s;
 }
+
 .serveis-inner::after {
   top: 70%;
   left: 80%;
   animation-delay: 1.5s;
 }
+
 .serveis-inner > div::before {
   top: 20%;
   left: 40%;
   animation-delay: 0.2s;
 }
+
 .serveis-inner > div::after {
   top: 80%;
   left: 20%;
   animation-delay: 1.8s;
 }
 
-/* Animación de cometas */
 @keyframes comet {
   0% {
     transform: translate(0, 0) scale(1);
@@ -478,7 +467,7 @@ body {
     opacity: 0.5;
   }
   100% {
-    transform: translate(800px, -800px) scale(1.5); 
+    transform: translate(800px, -800px) scale(1.5);
     opacity: 0;
   }
 }
@@ -488,7 +477,7 @@ body {
   margin-top: 100px;
   margin: 0 auto;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .cuadrados {
@@ -503,31 +492,28 @@ body {
   width: 30%;
   min-width: 250px;
   height: 200px;
-  background: #243d63; 
+  background: #243d63;
   border: 1px solid #2595CD;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s ease; 
-  background-size: contain; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.2s ease;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  text-decoration: none; 
-  color: inherit; 
+  text-decoration: none;
+  color: inherit;
 }
 
-
-/* Efecto azul al hacer clic */
 .cuadrado:active {
-  background: #2595CD; 
+  background: #2595CD;
 }
 
-/* Fondo de respaldo */
 .cuadrado:not([data-image]), .cuadrado[data-image=""] {
-  background: #0f1318; 
+  background: #0f1318;
 }
 
 .cuadrado-img {
@@ -569,9 +555,9 @@ body {
   .serveis-inner::after,
   .serveis-inner > div::before,
   .serveis-inner > div::after {
-    width: 6px; 
+    width: 6px;
     height: 6px;
-    animation-duration: 1.5s; 
+    animation-duration: 1.5s;
   }
 }
 
@@ -589,13 +575,13 @@ body {
   .serveis-inner::after,
   .serveis-inner > div::before,
   .serveis-inner > div::after {
-    width: 5px; 
+    width: 5px;
     height: 5px;
-    animation-duration: 1.2s; 
+    animation-duration: 1.2s;
   }
 }
 
-/* Nueva sección de pantalla completa con capa negra */
+/* Folder Section */
 .folder-section {
   width: 100vw;
   height: 100vh;
@@ -632,7 +618,6 @@ body {
   overflow: hidden;
 }
 
-/* Luces de fondo para la sección Instruccions */
 .instruccions::before {
   content: '';
   position: absolute;
@@ -640,25 +625,25 @@ body {
   left: 20%;
   width: 50%;
   height: 30%;
-  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* #2595CD intenso */
-  filter: blur(180px); /* Poco desenfoque */
-  z-index: 2; /* Detrás de los cuadrados */
-  opacity: 1; /* Base visible */
-  animation: pulse 6s ease-in-out infinite; /* Animación de pulsación */
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%);
+  filter: blur(180px);
+  z-index: 2;
+  opacity: 1;
+  animation: pulse 6s ease-in-out infinite;
 }
 
 .instruccions::after {
   content: '';
   position: absolute;
   top: 70%;
-  right: 5%; /* Movido más a la derecha (de 15% a 5%) */
+  right: 5%;
   width: 40%;
   height: 20%;
-  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* Tono más claro de #2595CD */
-  filter: blur(180px); /* Muy poco desenfoque */
-  z-index: 1; /* Detrás de los cuadrados */
-  opacity: 0.9; /* Ligeramente más suave */
-  animation: pulse 5s ease-in-out infinite 1s; /* Pulsación con retraso */
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%);
+  filter: blur(180px);
+  z-index: 1;
+  opacity: 0.9;
+  animation: pulse 5s ease-in-out infinite 1s;
 }
 
 .instruccions-inner::before {
@@ -668,34 +653,33 @@ body {
   left: 50%;
   width: 60%;
   height: 40%;
-  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%); /* Tono más oscuro de #2595CD */
-  filter: blur(180px); /* Poco desenfoque */
+  background: radial-gradient(circle at center, #0033ff 0%, transparent 50%);
+  filter: blur(180px);
   transform: translate(-50%, -50%);
-  z-index: 1; /* Detrás de los cuadrados */
-  opacity: 1; /* Base visible */
-  animation: pulse 7s ease-in-out infinite 0.5s; /* Pulsación con retraso diferente */
+  z-index: 1;
+  opacity: 1;
+  animation: pulse 7s ease-in-out infinite 0.5s;
 }
 
-/* Animación de pulsación para las luces */
 @keyframes pulse {
   0% {
-    transform: scale(1) translate(-50%, -50%); /* Ajuste para la luz centrada */
+    transform: scale(1) translate(-50%, -50%);
     opacity: 1;
   }
   50% {
-    transform: scale(1.2) translate(-50%, -50%); /* Crece ligeramente */
-    opacity: 0.7; /* Se desvanece un poco */
+    transform: scale(1.2) translate(-50%, -50%);
+    opacity: 0.7;
   }
   100% {
-    transform: scale(1) translate(-50%, -50%); /* Vuelve al tamaño original */
-    opacity: 1; /* Nota: Esto parece un error, debería ser 1 */
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
   }
 }
 
 .instruccions-inner {
   max-width: 1280px;
   margin: 0 auto;
-  z-index: 1; /* Encima de las luces */
+  z-index: 1;
 }
 
 .instruccions-text {
@@ -711,65 +695,63 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  background: transparent; /* Evita fondo opaco */
+  background: transparent;
 }
 
 .instruccio {
   width: 30%;
   min-width: 250px;
-  height: 300px; /* Altura fija para asegurar que el cuadrado sea consistente */
+  height: 300px;
   background: #21262d;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  padding: 0; /* Sin padding para que la imagen ocupe todo */
+  padding: 0;
   transition: transform 0.3s ease;
-  position: relative; /* Para posicionar imagen, capa y texto */
-  overflow: hidden; /* Evita desbordes */
-  z-index: 2; /* Encima de las luces */
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
 }
 
 .instruccio-img {
   width: 100%;
-  height: 100%; /* Ocupa todo el alto y ancho del cuadrado */
-  object-fit: cover; /* Llena el contenedor, recortando si es necesario */
+  height: 100%;
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0; /* Debajo de la capa negra y el texto */
+  z-index: 0;
 }
 
-/* Capa negra superpuesta */
 .instruccio::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Cubre todo el cuadrado */
-  background: rgba(0, 0, 0, 0.6); /* Negro con opacidad baja */
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 6px;
-  z-index: 1; /* Encima de la imagen, debajo del texto */
+  z-index: 1;
 }
 
-/* Contenedor para el texto */
 .instruccio h3, .instruccio p {
-  position: absolute; /* Posiciona el texto sobre la imagen */
-  z-index: 2; /* Encima de la imagen y la capa negra */
+  position: absolute;
+  z-index: 2;
   color: #ffffff;
   text-align: center;
-  width: 100%; /* Ocupa todo el ancho para centrar */
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8); /* Mejora legibilidad */
+  width: 100%;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
 }
 
 .instruccio h3 {
   font-size: 18px;
-  top: 200px; /* Ajustado para posicionar cerca de la parte superior */
+  top: 200px;
 }
 
 .instruccio p {
   font-size: 14px;
-  bottom: 20px; /* Ajustado para posicionar cerca de la parte inferior */
-  padding: 0 20px; /* Espaciado lateral para evitar bordes */
+  bottom: 20px;
+  padding: 0 20px;
 }
 
 .instruccio:hover {
@@ -780,11 +762,10 @@ body {
 @media (max-width: 768px) {
   .instruccio {
     width: 47%;
-    height: 250px; /* Ajuste de altura para tablet */
+    height: 250px;
   }
-  /* Ajuste de luces para pantallas medianas */
   .instruccions::before {
-    filter: blur(15px); /* Menos desenfoque */
+    filter: blur(15px);
   }
   .instruccions::after {
     filter: blur(10px);
@@ -797,11 +778,10 @@ body {
 @media (max-width: 480px) {
   .instruccio {
     width: 100%;
-    height: 200px; /* Ajuste de altura para móvil */
+    height: 200px;
   }
-  /* Ajuste de luces para pantallas pequeñas */
   .instruccions::before {
-    filter: blur(10px); /* Aún menos desenfoque */
+    filter: blur(10px);
   }
   .instruccions::after {
     filter: blur(8px);
@@ -871,7 +851,7 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #238636;
+  background: #2595CD;
   color: #ffffff;
   width: 50px;
   height: 50px;
@@ -892,14 +872,14 @@ body {
 }
 
 .to-top:hover {
-  background: #2ea043;
+  background: #2595CD;
   transform: translateY(-5px);
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
   .hero-titol {
-    width: 180px; 
+    width: 180px;
   }
   .hero-sub {
     font-size: 16px;
@@ -914,7 +894,7 @@ body {
     height: 60vh;
   }
   .lifty-bg {
-    width: 150px; 
+    width: 150px;
     top: 15%;
     left: 10%;
   }
@@ -926,7 +906,7 @@ body {
 
 @media (max-width: 480px) {
   .hero-titol {
-    width: 140px; 
+    width: 140px;
   }
   .hero-sub {
     font-size: 14px;
@@ -947,7 +927,7 @@ body {
     height: 50vh;
   }
   .lifty-bg {
-    width: 100px; 
+    width: 100px;
     top: 10%;
     left: 5%;
   }
@@ -956,3 +936,197 @@ body {
   .planet-3 { width: 40px; }
   .planet-4 { width: 50px; }
 }
+
+/* Media Query para 414px */
+@media (max-width: 414px) {
+  /* Header */
+  .header {
+    padding: 12px 10px; /* Reducido para menos espacio */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+  }
+
+  .header-inner {
+    flex-direction: column; /* Apila logo y navegación */
+    gap: 8px; /* Espacio reducido */
+    align-items: center; /* Centra todo */
+  }
+
+  .logo-img {
+    width: 50px; /* Logo más pequeño */
+    height: auto;
+  }
+
+  .nav ul {
+    flex-direction: row; /* Mantiene enlaces en fila para 414px */
+    gap: 10px; /* Espacio reducido */
+    flex-wrap: wrap; /* Permite salto de línea si no caben */
+    justify-content: center;
+  }
+
+  .nav ul li a {
+    font-size: 12px; /* Fuente más pequeña */
+    padding: 5px 8px; /* Botones más compactos */
+    border-radius: 4px;
+  }
+
+  /* Hero */
+  .hero {
+    height: 60vh; /* Aumentado para dar más espacio (~700px en 896px) */
+    min-height: 400px; /* Asegura espacio para el desplazamiento */
+    display: flex;
+    align-items: flex-start; /* Alinea contenido desde la parte superior */
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    padding: 40px 10px; /* Más espacio superior para bajar todo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-text {
+    position: relative;
+    top: 0;
+    margin-top: 140px; /* Baja el texto */
+    margin-bottom: 20px;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .hero-titol {
+    width: 120px;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    margin: 10px 0;
+  }
+
+  .titol-seccia {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .mobile-mockup {
+    max-width: 430px;
+    margin: -50px auto 0; /* Baja el mockup */
+    aspect-ratio: 2 / 2;
+    z-index: 1;
+  }
+
+  .mobile-img {
+    margin-top: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .promo-video {
+    position: absolute;
+    top: 3%; /* Mantenido para alineación en el mockup */
+    left: 7.5%;
+    width: 85%;
+    height: 55%;
+    border-radius: 10px;
+    z-index: 1;
+  }
+
+  .lifty-bg {
+    width: 80px;
+    top: 5%;
+    left: 5%;
+    z-index: 0;
+  }
+
+  .planet-1 {
+    width: 30px;
+    left: 85%;
+    top: 55%;
+    z-index: 0;
+  }
+
+  .planet-2 {
+    width: 60px;
+    left: 5%;
+    top: 65%;
+    z-index: 0;
+  }
+
+  .planet-3 {
+    width: 40px;
+    right: 15%;
+    top: 20%;
+    z-index: 0;
+  }
+
+  .planet-4 {
+    width: 50px;
+    left: 80%;
+    top: 75%;
+    z-index: 0;
+  }
+
+  .hero::before {
+    background: radial-gradient(circle at center, rgba(0, 170, 255, 0.7) 0%, transparent 60%);
+    opacity: 0.4;
+  }
+
+  .hero::after {
+    top: 60%;
+    width: 60%;
+    height: 60%;
+    filter: blur(30px);
+  }
+
+  #particles-js {
+    height: 100%;
+  }
+
+  /* Folder Section */
+  .folder-section {
+    width: 100vw;
+    height: 40vh; /* Altura compacta para 414px (~165px en iPhone XR) */
+    min-height: 200px; /* Evita que sea demasiado pequeño */
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .folder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Muestra la imagen completa sin recortes */
+    object-position: center; /* Centra la imagen */
+    display: block;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Instruccions */
+  .instruccio {
+    width: 100%; /* Mantenido del media query de 768px */
+    height: 250px; /* Mantenido del media query de 768px */
+    min-width: 150px; /* Ajustado para pantallas pequeñas */
+  }
+
+  .instruccio h3 {
+    font-size: 18px; /* Reducido para 414px */
+    top: 150px; /* Ajustado para la altura de 250px */
+    padding: 0 10px; /* Espacio lateral para evitar desbordes */
+  }
+
+  .instruccio p {
+    font-size: 15px; /* Reducido para 414px */
+    bottom: 10px; /* Ajustado para dejar espacio */
+    padding: 0 15px; /* Más espacio lateral */
+  }
+
+  .instruccio::before {
+    background: rgba(0, 0, 0, 0.7); /* Ligeramente más oscura para mejor contraste en móviles */
+  }
+}
+  
+

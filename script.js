@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setParticlesHeight();
-
   window.addEventListener('resize', setParticlesHeight);
 
   // Efecto parallax para las imágenes de instruccions
@@ -70,56 +69,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Efecto parallax al estilo GitHub para el texto fijo y la imagen del portátil
+  // Efecto para el texto en hero
   const heroText = document.querySelector('.hero-text');
   const quiSection = document.querySelector('.qui');
-  let hasDisappeared = false;
 
   window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
     const quiRect = quiSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const isMobile = window.innerWidth <= 414; // Detecta pantalla móvil
 
-    if (quiRect.top < windowHeight) {
-      hasDisappeared = true;
-      mobileMockup.classList.add('sticky');
+    // Controlar aparición/desaparición del texto
+    const threshold = isMobile ? windowHeight * 0.6 : windowHeight * 0.8; // Umbral más bajo en móvil
+    if (quiRect.top < threshold) {
+      // Al bajar: texto desaparece
       heroText.style.opacity = '0';
       heroText.style.filter = 'blur(8px)';
+      heroText.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
+      mobileMockup.classList.add('sticky');
     } else {
-      hasDisappeared = false;
-      mobileMockup.classList.remove('sticky');
+      // Al subir: texto reaparece
       heroText.style.opacity = '1';
       heroText.style.filter = 'none';
+      heroText.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
+      mobileMockup.classList.remove('sticky');
     }
 
-    if (!mobileMockup.classList.contains('sticky')) {
-      const imgOffset = scrollPosition * -0.7;
-      mobileMockup.style.transform = `translateY(${imgOffset}px)`;
-    }
-
-    if (!hasDisappeared) {
-      const heroTextRect = heroText.getBoundingClientRect();
-      const mobileRect = mobileMockup.getBoundingClientRect();
-      const fadeStart = windowHeight * 0.3;
-      const fadeEnd = windowHeight * 0.1;
-      let opacity = 1;
-      let blur = 0;
-
-      const distance = heroTextRect.bottom - mobileRect.top;
-      if (mobileRect.top < fadeStart) {
-        opacity = distance / (fadeStart - fadeEnd);
-        blur = (1 - opacity) * 8;
-        opacity = Math.max(0, Math.min(1, opacity));
-        blur = Math.max(0, Math.min(8, blur));
+    // Desactivar efecto parallax adicional en móvil para evitar conflictos
+    if (!isMobile) {
+      if (!mobileMockup.classList.contains('sticky')) {
+        const imgOffset = scrollPosition * -0.7;
+        mobileMockup.style.transform = `translateY(${imgOffset}px)`;
       }
-
-      heroText.style.opacity = opacity;
-      heroText.style.filter = `blur(${blur}px)`;
-    }
-
-    if (quiRect.top < windowHeight && quiRect.bottom > 0) {
-      const quiOffset = (windowHeight - quiRect.top) * 0.1;
-      quiSection.style.transform = `translateY(-${quiOffset}px)`;
     }
   });
 });
