@@ -941,46 +941,46 @@ body {
 @media (max-width: 414px) {
   /* Header */
   .header {
-    padding: 12px 10px; /* Reducido para menos espacio */
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+    padding: 12px 10px; 
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15); 
   }
 
   .header-inner {
-    flex-direction: column; /* Apila logo y navegación */
-    gap: 8px; /* Espacio reducido */
-    align-items: center; /* Centra todo */
+    flex-direction: column; 
+    gap: 8px; 
+    align-items: center; 
   }
 
   .logo-img {
-    width: 50px; /* Logo más pequeño */
+    width: 50px; 
     height: auto;
   }
 
   .nav ul {
-    flex-direction: row; /* Mantiene enlaces en fila para 414px */
-    gap: 10px; /* Espacio reducido */
-    flex-wrap: wrap; /* Permite salto de línea si no caben */
+    flex-direction: row; 
+    gap: 10px; 
+    flex-wrap: wrap; 
     justify-content: center;
   }
 
   .nav ul li a {
-    font-size: 12px; /* Fuente más pequeña */
-    padding: 5px 8px; /* Botones más compactos */
+    font-size: 12px; 
+    padding: 5px 8px; 
     border-radius: 4px;
   }
 
   /* Hero */
   .hero {
-    height: 60vh; /* Aumentado para dar más espacio (~700px en 896px) */
-    min-height: 400px; /* Asegura espacio para el desplazamiento */
+    height: 60vh; 
+    min-height: 400px; 
     display: flex;
-    align-items: flex-start; /* Alinea contenido desde la parte superior */
+    align-items: flex-start; 
     justify-content: center;
     overflow: hidden;
   }
 
   .hero-content {
-    padding: 40px 10px; /* Más espacio superior para bajar todo */
+    padding: 40px 10px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -989,7 +989,7 @@ body {
   .hero-text {
     position: relative;
     top: 0;
-    margin-top: 140px; /* Baja el texto */
+    margin-top: 140px; 
     margin-bottom: 20px;
     z-index: 2;
     text-align: center;
@@ -1011,7 +1011,7 @@ body {
 
   .mobile-mockup {
     max-width: 430px;
-    margin: -50px auto 0; /* Baja el mockup */
+    margin: -50px auto 0; 
     aspect-ratio: 2 / 2;
     z-index: 1;
   }
@@ -1025,7 +1025,7 @@ body {
 
   .promo-video {
     position: absolute;
-    top: 3%; /* Mantenido para alineación en el mockup */
+    top: 3%; 
     left: 7.5%;
     width: 85%;
     height: 55%;
@@ -1087,8 +1087,8 @@ body {
   /* Folder Section */
   .folder-section {
     width: 100vw;
-    height: 40vh; /* Altura compacta para 414px (~165px en iPhone XR) */
-    min-height: 200px; /* Evita que sea demasiado pequeño */
+    height: 40vh; 
+    min-height: 200px; 
     position: relative;
     margin: 0;
     padding: 0;
@@ -1098,8 +1098,8 @@ body {
   .folder-img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Muestra la imagen completa sin recortes */
-    object-position: center; /* Centra la imagen */
+    object-fit: contain; 
+    object-position: center; 
     display: block;
     position: relative;
     z-index: 0;
@@ -1107,25 +1107,25 @@ body {
 
   /* Instruccions */
   .instruccio {
-    width: 100%; /* Mantenido del media query de 768px */
-    height: 250px; /* Mantenido del media query de 768px */
-    min-width: 150px; /* Ajustado para pantallas pequeñas */
+    width: 100%; 
+    height: 250px; 
+    min-width: 150px; 
   }
 
   .instruccio h3 {
-    font-size: 18px; /* Reducido para 414px */
-    top: 150px; /* Ajustado para la altura de 250px */
-    padding: 0 10px; /* Espacio lateral para evitar desbordes */
+    font-size: 18px; 
+    top: 150px; 
+    padding: 0 10px; 
   }
 
   .instruccio p {
-    font-size: 15px; /* Reducido para 414px */
-    bottom: 10px; /* Ajustado para dejar espacio */
-    padding: 0 15px; /* Más espacio lateral */
+    font-size: 15px; 
+    bottom: 10px; 
+    padding: 0 15px; 
   }
 
   .instruccio::before {
-    background: rgba(0, 0, 0, 0.7); /* Ligeramente más oscura para mejor contraste en móviles */
+    background: rgba(0, 0, 0, 0.7); 
   }
 }
   
