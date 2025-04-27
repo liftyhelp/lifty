@@ -971,7 +971,7 @@ body {
 
   /* Hero */
   .hero {
-    height: 60vh; 
+    height: 80vh; 
     min-height: 400px; 
     display: flex;
     align-items: flex-start; 
